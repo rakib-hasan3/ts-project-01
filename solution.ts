@@ -18,12 +18,13 @@ function formatValue(value: Input1){
     return value;
 }
 
-console.log(formatValue("roohim"));
-console.log(formatValue(5));
-console.log(formatValue(false));
+ 
 
 
-// problem -2
+
+
+
+
 
  
 type Input = string | any[];
@@ -38,10 +39,10 @@ function getLength(value:Input){
        
       return value;
 }
-console.log(getLength("typescisdfas"));
-console.log(getLength([5,6,8,5,8]))
+ 
 
-// problem -3
+
+
 
 class Person{
     name:string;
@@ -60,13 +61,10 @@ class Person{
    
     
 }
-const person1 = new Person('John Doe', 30);
-console.log(person1.getDetails());
+ 
 
-const person2 = new Person('Alice', 25);
-console.log(person2.getDetails());
 
-// problem -4
+
 
  
  interface Item {
@@ -80,16 +78,11 @@ function filterByRating( items:Item[]):Item[]{
 }
 
 
- const books = [
-  { title: 'Book A', rating: 4.5 },
-  { title: 'Book B', rating: 3.2 },
-  { title: 'Book C', rating: 5.0 },
-];
-
-console.log(filterByRating(books));
+ 
 
 
-// problem -5
+
+
 interface data{
      id:number;
      name:string;
@@ -102,15 +95,14 @@ function filterActiveUsers(datas:data[]):data[]{
 
 }
 
-const users=[
-    {id:1, name:"rakib",email:'rakib@gmail.com',isActive:true},
-    { id: 2, name: 'Asha', email: 'asha@example.com', isActive: false },
-    { id: 3, name: 'Rumi', email: 'rumi@example.com', isActive: true },
-]
+ 
 
-console.log(filterActiveUsers(users))
 
-// problem -6
+
+
+
+
+
 
 interface Book{
     title:string;
@@ -128,17 +120,11 @@ function printBookDetails(books:Book):void {
          console.log(newBooks)
 }
 
-const myBook: Book = {
-  title: 'The Great Gatsby',
-  author: 'F. Scott Fitzgerald',
-  publishedYear: 1925,
-  isAvailable: true,
-};
-
-printBookDetails(myBook);
+ 
 
 
-// problem -7
+
+
 
 function getUniqueValues<T>(arr1:T[], arr2:T[]):T[]{
      const result: T[]=[];
@@ -153,13 +139,12 @@ function getUniqueValues<T>(arr1:T[], arr2:T[]):T[]{
      return result;
 }
 
-const array1 = [1, 2, 3, 4, 5];
-const array2 = [3, 4, 5, 6, 7];
-console.log(getUniqueValues(array1, array2));
+ 
 
 
 
-// problem-8
+
+
 
 interface Product{
     name:string;
@@ -168,8 +153,22 @@ interface Product{
     discount?:number;
 }
 
-function calculateTotalPrice(product:Product[]):number{
-        if(product.length===0) 
+ function calculateTotalPrice(products: Product[]): number {
+  if (products.length === 0) return 0;
+
+  const total = products.map(product => {
+    
+      const basePrice = product.price * product.quantity;
+
+       const discountAmount = product.discount ? (basePrice * product.discount) / 100: 0;
+       
+        
+
+      return basePrice - discountAmount;
+    })
+    .reduce((sum, value) => sum + value, 0);
+
+  return total;
 }
 
-
+ 
