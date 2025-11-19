@@ -1,12 +1,17 @@
-1. Ans:Interface সাধারণত object structure define করে আর merge করা যায়।Type alias হিসেবে কাজ করে, union, tuple, বা primitive type বানানো যায় কিন্তু merge করা যায় না।
+1. Ans: টাইপ হচ্ছে উপাদান কোন ধরনের হবে তা নির্ধারণ করে । আর ইনটারফেস হল একধরনের অবজেক্ট যার মধ্যে কোন ধরনের ডাটা থাকবে তা নিরধারন করে ।
 
-ex: 
+
+Example: 
 interface Person { name: string; age: number; }
-type ID = string | number;
+type ID =  number;
 
-2:Ans: keyof keyword TypeScript-এ ব্যবহার হয় কোনো object type-এর সব property name বের করার জন্য |
 
-Ex:
+
+
+
+2. Ans: কিঅফ অবজেক্ট এ কোন ধরনের কি আছে তা বের করার জন্য বেবহার করা হয় ।
+
+Example:
 
 interface Person {
   name: string;
@@ -14,5 +19,5 @@ interface Person {
 }
 
 type PersonKeys = keyof Person; 
- const key: PersonKeys = "name";
+// name,age হচ্ছে এখানে কি |
 

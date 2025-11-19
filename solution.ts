@@ -125,18 +125,38 @@ function printBookDetails(books:Book):void {
 
 
 
+function getUniqueValues<T extends number | string>(arr1: T[], arr2: T[]): T[] {
+    const result: T[] = [];
 
-function getUniqueValues<T>(arr1:T[], arr2:T[]):T[]{
-     const result: T[]=[];
-
-     for(let i=0; i<arr1.length;i++){
-
-        const num =arr1[i];
-        if(arr2.includes(num)){
-            result.push(num);
+    
+    for (let i = 0; i < arr1.length; i++) {
+        let isDuplicate = false;
+        
+        for (let j = 0; j < result.length; j++) {
+            if (arr1[i] === result[j]) {
+                isDuplicate = true;
+                 
+            }
         }
-     }
-     return result;
+        if (!isDuplicate) {
+            result[result.length] = arr1[i]; 
+        }
+    }
+
+     for (let i = 0; i < arr2.length; i++) {
+        let isDuplicate = false;
+        for (let j = 0; j < result.length; j++) {
+            if (arr2[i] === result[j]) {
+                isDuplicate = true;
+                break;
+            }
+        }
+        if (!isDuplicate) {
+            result[result.length] = arr2[i];
+        }
+    }
+
+    return result;
 }
 
  
